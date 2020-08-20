@@ -1,3 +1,51 @@
+class Pet
+  attr_reader :type, :name
+
+  def initialize(type, name)
+    @type = type
+    @name = name
+  end
+end
+
+class Owner
+  attr_accessor :number_of_pets
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+    @number_of_pets = 0
+  end
+end
+
+class Shelter
+  def initialize
+    @adoptions = {}
+  end
+
+  def adopt(owner, pet)
+    if adoptions.has_key?(owner.name)
+      adoptions[owner.name] << pet
+    else
+      adoptions[owner.name] = [pet]
+    end
+    owner.number_of_pets += 1
+  end
+
+  def print_adoptions
+    adoptions.each do |owner, pets|
+      puts "#{owner} has adopted the following pets:"
+      pets.each do |pet|
+        puts "a #{pet.type} named #{pet.name}"
+      end
+      puts ''
+    end
+  end
+
+  private
+
+  attr_accessor :adoptions
+end
+
 butterscotch = Pet.new('cat', 'Butterscotch')
 pudding      = Pet.new('cat', 'Pudding')
 darwin       = Pet.new('bearded dragon', 'Darwin')
