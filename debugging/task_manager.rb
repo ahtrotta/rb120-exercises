@@ -32,7 +32,7 @@ class TaskManager
   end
 
   def display_high_priority_tasks
-    tasks = tasks.select do |task|
+    tasks = self.tasks.select do |task|
       task.priority == :high
     end
 
@@ -74,3 +74,4 @@ valentinas_tasks.complete_task('read OOP book')
 
 valentinas_tasks.display_all_tasks
 valentinas_tasks.display_high_priority_tasks
+valentinas_tasks.display_all_tasks
